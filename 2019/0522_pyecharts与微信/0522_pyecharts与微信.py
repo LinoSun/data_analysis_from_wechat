@@ -61,7 +61,7 @@ def geo_base():
             geo.add_schema(maptype="china", itemstyle_opts=opts.ItemStyleOpts(color="gray"))
             geo.add("微信好友分布地图", [city], type_="effectScatter", symbol_size=10)
             geo.set_series_opts(label_opts=opts.LabelOpts(is_show=False))
-            geo.set_global_opts(visualmap_opts=opts.VisualMapOpts(), title_opts=opts.TitleOpts(title="微信好友分布地图"), )
+            geo.set_global_opts(visualmap_opts=opts.VisualMapOpts(), title_opts=opts.TitleOpts(title="来自中南海的瓶子"), )
         except Exception as e:
             print(city)
             pass
