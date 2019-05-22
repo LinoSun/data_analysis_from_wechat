@@ -1,6 +1,8 @@
 import re
 
+from pyecharts.charts import Geo
 from wxpy import Bot, Chat
+from pyecharts import options as opts
 
 # 获取好友
 class Demo(Chat):
@@ -53,6 +55,19 @@ def get_data():
 def geo_base():
     city_data = get_data()
     print(city_data)
+    geo = Geo(init_opts=opts.InitOpts(theme="vintage"))
+    for city in city_data:
+        try:
+            geo.add_schema(maptype="china", itemstyle_opts=opts.ItemStyleOpts(color="gray"))
+            geo.add("微信好友分布地图", [city], type_="effectScatter", symbol_size=10)
+            geo.set_series_opts(label_opts=opts.LabelOpts(is_show=False))
+            geo.set_global_opts(visualmap_opts=opts.VisualMapOpts(), title_opts=opts.TitleOpts(title="微信好友分布地图"), )
+        except Exception as e:
+            print(city)
+            pass
+
+    geo.render("ms_geo.html")
+
 
 
 
